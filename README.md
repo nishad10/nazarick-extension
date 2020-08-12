@@ -1,11 +1,9 @@
-# Chrome Extension Boilerplate with React 16.13 and Webpack 4
+# Personal Chrome Extension
 
-[![npm](https://img.shields.io/npm/v/chrome-extension-boilerplate-react)](https://github.com/nishad10/nazarick-extension.git)
-[![npm-download](https://img.shields.io/npm/dw/chrome-extension-boilerplate-react)](https://github.com/nishad10/nazarick-extension.git)
-[![npm](https://img.shields.io/npm/dm/chrome-extension-boilerplate-react)](https://github.com/nishad10/nazarick-extension.git)
+## Boilerplate
+This repo was initialized using the boilerplate available here.
 
-[![dependencies Status](https://david-dm.org/lxieyang/chrome-extension-boilerplate-react/status.svg)](https://david-dm.org/lxieyang/chrome-extension-boilerplate-react)
-[![devDependencies Status](https://david-dm.org/lxieyang/chrome-extension-boilerplate-react/dev-status.svg)](https://david-dm.org/lxieyang/chrome-extension-boilerplate-react?type=dev)
+https://github.com/lxieyang/chrome-extension-boilerplate-react/blob/master/LICENSE
 
 ## Installing and Running
 
@@ -22,7 +20,6 @@
    2. Check `Developer mode`
    3. Click on `Load unpacked extension`
    4. Select the `build` folder.
-8. Happy hacking.
 
 ## Packing
 
