@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button } from 'antd';
 
 import './Popup.css';
 
@@ -15,7 +16,6 @@ const Popup = () => {
     }
   );
   const shortenUrl = () => {
-    console.log('in');
     const hash = axios.post('http://127.0.0.1:5000/shorten', {
       url: tabUrl,
     });
@@ -33,22 +33,9 @@ const Popup = () => {
     document.body.removeChild(dummy);
   };
   return (
-    <div className="App">
+    <div>
       <header className="App-header">
-        <button
-          style={{
-            background: '#1dd8e4',
-            borderRadius: '11px',
-            padding: '20px 45px',
-            color: '#ffffff',
-            display: 'inline-block',
-            font: 'normal bold 20px/1 "Roboto", sans-serif',
-            textAlign: 'center',
-          }}
-          onClick={() => (tabUrl ? shortenUrl(tabUrl) : null)}
-        >
-          Shorten URL!
-        </button>
+        <Button type="primary" danger onClick={() => (tabUrl ? shortenUrl(tabUrl) : null)}>Shorten URL!</Button>
       </header>
     </div>
   );
