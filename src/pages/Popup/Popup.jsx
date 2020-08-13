@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button } from 'antd';
 
-import './Popup.css';
+import { ButtonWrapper, Wrapper } from './PopupStyled.jsx';
 
 const Popup = () => {
   const [tabUrl, setTabUrl] = useState();
@@ -34,9 +33,11 @@ const Popup = () => {
   };
   return (
     <div>
-      <header className="App-header">
-        <Button type="primary" danger onClick={() => (tabUrl ? shortenUrl(tabUrl) : null)}>Shorten URL!</Button>
-      </header>
+      <Wrapper>
+        <header className="App-header">
+          <ButtonWrapper type="primary" danger onClick={() => (tabUrl ? shortenUrl(tabUrl) : null)}>Shorten URL!</ButtonWrapper>
+        </header>
+      </Wrapper>
     </div>
   );
 };

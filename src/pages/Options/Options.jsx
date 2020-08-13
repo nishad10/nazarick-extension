@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './Options.css';
+import { Wrapper } from './OptionsStyled.jsx';
 
 class Options extends Component {
   render() {
-    return <div className="OptionsContainer">Options Page</div>;
+    return <Wrapper className="OptionsContainer">Options Page</Wrapper>;
   }
 }
 

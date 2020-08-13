@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Newtab.css';
-import './Newtab.scss';
+import { Wrapper } from './NewtabStyled.js';
 
 const Newtab = () => {
   const [urlList, setUrlList] = useState([]);
@@ -16,7 +15,7 @@ const Newtab = () => {
       const getRedditData = async () => {
         const redditData = await axios.get(
           `https://www.reddit.com/r/${
-            subredditList[Math.floor(Math.random() * 2)]
+          subredditList[Math.floor(Math.random() * 2)]
           }/.json?count=50`
         );
         const items = redditData?.data?.data?.children;
@@ -35,16 +34,16 @@ const Newtab = () => {
   }, [tabID]);
   const rand = Math.floor(Math.random() * 10);
   return (
-    <div className="App">
+    <Wrapper className="App">
       <header className="App-header">
         {
           <img
             style={
               loaded
                 ? {
-                    width: '400px',
-                    borderRadius: '25px',
-                  }
+                  width: '400px',
+                  borderRadius: '25px',
+                }
                 : { display: 'none' }
             }
             src={urlList[urlList.length === 1 ? 0 : rand]}
@@ -52,7 +51,7 @@ const Newtab = () => {
           />
         }
       </header>
-    </div>
+    </Wrapper>
   );
 };
 
