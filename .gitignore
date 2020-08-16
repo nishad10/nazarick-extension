@@ -9,6 +9,10 @@
 # production
 /build
 
+# chrome store
+build.crx
+build.pem
+
 # misc
 .DS_Store
 .env.local
