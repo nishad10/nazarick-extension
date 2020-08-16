@@ -1,7 +1,7 @@
 import '../../assets/img/icon-34.png';
 import '../../assets/img/icon-128.png';
 import secrets from 'secrets';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 import 'firebase/firestore';
 
 console.log('This is the background page.');
@@ -18,8 +18,18 @@ const firebaseConfig = {
   measurementId: secrets.MEASUREMENTID,
 };
 
-const app = firebase.initializeApp(firebaseConfig);
-const database = app.database();
-const db = app.firestore();
-console.log(db.collection('nazarick-ffc4a').get());
-console.log(database.app);
+// DB Connection Init
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// Watchdog on value change modify localstorage for frontend
+db.ref('/backend/').on('value', function (snapshot) {
+  window.localStorage.setItem('ngrok', JSON.stringify(snapshot.val().ngrok));
+});
+
+// Fetch and update backend at an interval
+/*
+window.setInterval(() => {
+  db.ref('/backend/').child('ngrok').set('test10');
+}, 1000 * 60 * 50000);
+*/
