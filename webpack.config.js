@@ -6,7 +6,7 @@ var webpack = require('webpack'),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   WriteFilePlugin = require('write-file-webpack-plugin');
-
+const dotenv = require('dotenv');
 // load the secrets
 var alias = {
   'react-dom': '@hot-loader/react-dom',
@@ -30,6 +30,11 @@ var fileExtensions = [
 if (fileSystem.existsSync(secretsPath)) {
   alias['secrets'] = secretsPath;
 }
+const envDot = dotenv.config().parsed;
+const envKeys = Object.keys(envDot).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(envDot[next]);
+  return prev;
+}, {});
 
 var options = {
   mode: process.env.NODE_ENV || 'development',
@@ -46,6 +51,9 @@ var options = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].bundle.js',
+  },
+  node: {
+    fs: 'empty'
   },
   module: {
     rules: [
@@ -102,6 +110,7 @@ var options = {
       .concat(['.jsx', '.js', '.css']),
   },
   plugins: [
+    new webpack.DefinePlugin(envKeys),
     new webpack.ProgressPlugin(),
     // clean the build folder
     new CleanWebpackPlugin({

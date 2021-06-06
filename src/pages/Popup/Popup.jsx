@@ -3,8 +3,6 @@ import axios from 'axios';
 
 import { ButtonWrapper, Wrapper } from './PopupStyled.jsx';
 
-require('dotenv').config()
-
 const Popup = () => {
   const [tabUrl, setTabUrl] = useState();
   chrome.tabs.query(
@@ -17,11 +15,11 @@ const Popup = () => {
     }
   );
   const shortenUrl = () => {
-    const hash = axios.post(`${process.env.NGROKSERVER}/shorten`, {
+    const hash = axios.post(`${process.env.APP_SERVER}/shorten`, {
       url: tabUrl,
     });
     hash.then((response) => {
-      copyToClipboard(`${process.env.NGROKSERVER}/s/${response.data.short}`);
+      copyToClipboard(`${process.env.APP_SERVER}/s/${response.data.short}`);
     });
   };
   const copyToClipboard = (text) => {
